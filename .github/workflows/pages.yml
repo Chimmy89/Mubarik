@@ -2,6 +2,7 @@ name: Deploy Web to GitHub Pages
 
 # Builds the Expo web export and publishes it to GitHub Pages, giving a public
 # URL that opens in any phone browser — no app install, no account needed.
+# (Pages must be enabled once: Settings → Pages → Source: GitHub Actions.)
 
 on:
   workflow_dispatch:
