@@ -11,5 +11,14 @@ module.exports = ({ config }) => {
       googleMaps: { apiKey: key },
     };
   }
+
+  // When hosting the web build under a sub-path (e.g. GitHub Pages at
+  // /Mubarik/), set EXPO_WEB_BASE_URL so assets and routes resolve correctly.
+  // Left unset for root hosting (Vercel), so this is a no-op there.
+  const baseUrl = process.env.EXPO_WEB_BASE_URL;
+  if (baseUrl) {
+    config.experiments = { ...(config.experiments || {}), baseUrl };
+  }
+
   return config;
 };
