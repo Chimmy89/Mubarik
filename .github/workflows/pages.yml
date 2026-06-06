@@ -7,7 +7,9 @@ name: Deploy Web to GitHub Pages
 on:
   workflow_dispatch:
   push:
-    branches: [main, claude/local-happenings-platform-BnIcC]
+    # Pages' github-pages environment only allows deploys from the repo's
+    # default branch, so we trigger from it (not main) to avoid rejected runs.
+    branches: [claude/local-happenings-platform-BnIcC]
     paths-ignore:
       - 'README.md'
 
