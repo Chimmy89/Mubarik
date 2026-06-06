@@ -43,7 +43,11 @@ jobs:
         run: npx expo prebuild --platform android --no-install
 
       - name: Pin Kotlin version (Compose compiler compatibility)
-        run: echo "android.kotlinVersion=1.9.25" >> android/gradle.properties
+        # React Native 0.76 pins the Kotlin compiler to 1.9.24. Expo's default
+        # ext is 1.9.25, which makes expo-modules-core pick Compose compiler
+        # 1.5.15 (requires 1.9.25) and clash with the 1.9.24 compiler. Pin to
+        # 1.9.24 so Compose resolves to 1.5.14 and matches.
+        run: echo "android.kotlinVersion=1.9.24" >> android/gradle.properties
 
       - name: Build release APK
         env:
